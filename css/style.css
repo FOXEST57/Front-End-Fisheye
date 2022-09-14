@@ -17,6 +17,27 @@ h1 {
     margin-right: 100px;
 }
 
+h2 {
+    color: #901C1C;
+    margin-bottom: 0;
+}
+
+h3 {
+    color: #901C1C;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+h4 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
 img {
     border-radius: 50%;
     height: 100%;
