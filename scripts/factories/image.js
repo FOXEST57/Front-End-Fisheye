@@ -4,7 +4,7 @@
 //     const picture = `assets/photographers/${portrait}`;
 
 //     function getUserCardDOM() {
-//         const article = document.createElement('article');
+//         const link = document.createElement('article');
 //         const img = document.createElement('img');
 //         img.setAttribute("src", picture)
 //         const h2 = document.createElement('h2');
@@ -19,4 +19,4 @@
 //     return { name, picture, city, getUserCardDOM }
 // }
 
-export default imageFactory;
+// export default imageFactory;
