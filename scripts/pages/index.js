@@ -1,7 +1,7 @@
 import getPhotographers from '/data/api.js'
 import photographerFactory from '/scripts/factories/photographer.js'
 
-export default displayData;
+
 
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");

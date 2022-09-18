@@ -13,6 +13,7 @@ function imageFactory(data) {
         photographer_ident.className = "identite_photographe"
 
         const h2 = document.createElement('h2');
+        h2.className = "name";
         h2.textContent = name;
         const ville = document.createElement('p');
         ville.className = "city"

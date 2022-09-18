@@ -1,28 +1,34 @@
-import imageFactory from "../factories/image.js";
-
 import getPhotographers from '/data/api.js'
-
-
-// //Mettre le code JavaScript lié à la page photographer.html
-
+import imageFactory from "../factories/image.js";
+//Mettre le code JavaScript lié à la page photographer.html
 const id = getId()
 
+async function displayData(media) {
+    const mediaSection = document.querySelector(".main");
 
+    media.forEach((photo) => {
+        const photoModel = imageFactory(photo);
+        const userCardDOM = photoModel.getMediasUserCardDOM();
+        main.appendChild(userCardDOM);
+        // console.log(userCardDOM)
+    });
+    console.log(media)
+};
 
 async function init() {
     // Récupère les datas des photographes
-    const { photographers, media } = await getPhotographers();
-    const photographer = photographers.find(a => a.id === id);
-    const medias = media.filter(a => a.photographerId === id);
+    const { media } = await getPhotographers();
+    // const photo = media.find(a => a.id === id);
+    // const medias = media.filter(a => a.id === id);
 
-    console.log(medias)
+    displayData(media);
 
-
-    // displayData(photographer);
 
 };
 
 init()
+
+
 
 // Ici nous récupérons l'ID du photographe grace au query string
 
