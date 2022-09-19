@@ -17,16 +17,20 @@ async function displayData(media) {
 
 async function init() {
     // Récupère les datas des photographes
-    const { media } = await getPhotographers();
+    const { media, photographers } = await getPhotographers();
     // const photo = media.find(a => a.id === id);
     // const medias = media.filter(a => a.id === id);
 
-    displayData(media);
+    displayData(media, photographers);
 
 
 };
+// console.log(getPhotographers())
+// console.log(displayData())
+// console.log(imageFactory)
 
 init()
+    // console.log(init())
 
 
 
@@ -40,3 +44,4 @@ function getId() {
     return Number(params.id);
 
 }
+console.log(getId())

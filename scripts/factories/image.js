@@ -1,9 +1,7 @@
-function imageFactory(data) {
-    const { name, portrait, city, country, tagline, price, id, title, image, likes } = data;
+function imageFactory(datas) {
+    const { name, photos, city, country, tagline, price, id, title, image, likes } = datas;
 
-
-
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `assets/photographers/${photos}`;
 
     function getMediasUserCardDOM() {
         const img = document.createElement('img');
@@ -13,14 +11,14 @@ function imageFactory(data) {
         photographer_ident.className = "identite_photographe"
 
         const h2 = document.createElement('h2');
-        h2.className = "name";
-        h2.textContent = name;
+        h2.className = "nom";
+        h2.textContent = name + ' nom';
         const ville = document.createElement('p');
-        ville.className = "city"
-        ville.textContent = city + ',  ' + country;
+        ville.className = "ville"
+        ville.textContent = city + ', ville ' + country + ' pays';
         const descriptif = document.createElement('p');
         descriptif.className = "descriptif"
-        descriptif.textContent = tagline;
+        descriptif.textContent = tagline + ' descriptif';
 
         photographer_ident.appendChild(h2);
         photographer_ident.appendChild(ville);
@@ -31,6 +29,8 @@ function imageFactory(data) {
 
         return (photographer_ident);
     }
+    console.log(getMediasUserCardDOM())
+        // console.log(photographer_ident)
     return { name, picture, city, country, tagline, price, id, title, image, likes, getMediasUserCardDOM }
 }
 
