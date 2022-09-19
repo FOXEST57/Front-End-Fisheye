@@ -33,5 +33,6 @@ function photographerFactory(data) {
 
         return (article);
     }
+    console.log(getUserCardDOM())
     return { name, picture, city, country, tagline, price, getUserCardDOM }
 }

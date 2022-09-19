@@ -1,13 +1,13 @@
 function imageFactory(datas) {
     const { name, photos, city, country, tagline, price, id, title, image, likes } = datas;
 
-    const picture = `assets/photographers/${photos}`;
+    const picture = `assets/photographers/${photos}`
 
     function getMediasUserCardDOM() {
-        const img = document.createElement('img');
+        const img = document.createElement('img')
         img.setAttribute("src", picture)
 
-        const photographer_ident = document.createElement('div');
+        const photographer_ident = document.createElement('div')
         photographer_ident.className = "identite_photographe"
 
         const h2 = document.createElement('h2');
