@@ -1,40 +1,5 @@
-import getPhotographers from '/data/api.js'
-import imageFactory from "../factories/image.js";
-//Mettre le code JavaScript lié à la page photographer.html
+// recupérere iD
 const id = getId()
-
-async function displayData(media) {
-    const mediaSection = document.querySelector(".main");
-
-    media.forEach((photo) => {
-        const photoModel = imageFactory(photo);
-        const userCardDOM = photoModel.getMediasUserCardDOM();
-        main.appendChild(userCardDOM);
-        // console.log(userCardDOM)
-    });
-    console.log(media)
-};
-
-async function init() {
-    // Récupère les datas des photographes
-    const { media, photographers } = await getPhotographers();
-    // const photo = media.find(a => a.id === id);
-    // const medias = media.filter(a => a.id === id);
-
-    displayData(media, photographers);
-
-
-};
-// console.log(getPhotographers())
-// console.log(displayData())
-// console.log(imageFactory)
-
-init()
-    // console.log(init())
-
-
-
-// Ici nous récupérons l'ID du photographe grace au query string
 
 function getId() {
     const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -44,4 +9,34 @@ function getId() {
     return Number(params.id);
 
 }
-console.log(getId())
+
+
+// recuperer les données
+
+
+const data = await fetch('data/photographers.json').then(a => a.json())
+
+// console.log(data.photographers)
+
+//trier les données : le photographe +ses medias
+
+const photographer = data.photographers.find(a => a.id == id)
+console.log(photographer)
+
+const medias = data.media.filter(a => {
+    return a.photographerId == id
+})
+console.log(medias)
+
+//afficher les données
+
+const photographerSection = document.createElement('section')
+photographerSection.className = "photographer"
+const html = `
+<h1> ${photographer.name} </h1>
+<h2> dsffds </h2>
+<img src="/assets/photographers/${photographer.portrait}">
+<img src="/assets/portfolio/medium/${medias.image}">
+`
+photographerSection.innerHTML = html
+document.querySelector('.photograph-header').prepend(photographerSection)

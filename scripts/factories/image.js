@@ -1,4 +1,4 @@
-function imageFactory(datas) {
+function imageFactory(data) {
     const { name, photos, city, country, tagline, price, id, title, image, likes } = datas;
 
     const picture = `assets/photographers/${photos}`
@@ -29,8 +29,8 @@ function imageFactory(datas) {
 
         return (photographer_ident);
     }
-    console.log(getMediasUserCardDOM())
-        // console.log(photographer_ident)
+    // console.log(getMediasUserCardDOM())
+    // console.log(photographer_ident)
     return { name, picture, city, country, tagline, price, id, title, image, likes, getMediasUserCardDOM }
 }
 

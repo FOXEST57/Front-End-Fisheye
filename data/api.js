@@ -8,4 +8,4 @@ async function getPhotographers() {
 
 
 }
-// console.log(getPhotographers())
+console.log('a', getPhotographers())
