@@ -17,8 +17,15 @@ h1 {
     margin-right: 100px;
 }
 
-img {
+.photographer_picture {
     border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+}
+
+img {
     height: 100%;
     object-fit: cover;
     height: 200px;

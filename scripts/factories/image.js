@@ -6,6 +6,7 @@ function imageFactory(data) {
     function getMediasUserCardDOM() {
         const img = document.createElement('img')
         img.setAttribute("src", picture)
+        img.className = "photographer_picture"
 
         const photographer_ident = document.createElement('div')
         photographer_ident.className = "identite_photographe"
