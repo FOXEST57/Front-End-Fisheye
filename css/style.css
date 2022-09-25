@@ -28,8 +28,9 @@ h1 {
 img {
     height: 100%;
     object-fit: cover;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
+    border-radius: 5px;
 }
 
 .logo {
@@ -59,6 +60,10 @@ img {
     font-size: 36px;
 }
 
+.photograph-header {
+    display: flex;
+}
+
 .city {
     color: #901C1C;
     margin-bottom: 0;
@@ -73,4 +78,15 @@ img {
 .price {
     margin-bottom: 0;
     margin-top: 0;
+}
+
+.section_media {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card_picture {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 4%;
 }

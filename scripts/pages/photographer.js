@@ -43,16 +43,18 @@ const html = `
 <h2> ${photographer.city + ', ' + photographer.country}</h2>
 `
 photographerSection.innerHTML = html
-document.querySelector('.photograph-header').prepend(photographerSection) <
+document.querySelector('.photograph-header').prepend(photographerSection)
 
 
-    medias.forEach(function(media) {
-        let imageSection = document.createElement('div')
-        const html = `
-    <span> ${media.title} </span>
-    <img src="/assets/portfolio/medium/${media.image}">
-    `
-        imageSection.innerHTML = html
-        document.querySelector('.photograph-header').prepend(imageSection)
-            // console.log(media.image)
-    })
+medias.forEach(function(media) {
+
+    let imageSection = document.createElement('div')
+    imageSection.className = "card_picture"
+    const html = `
+        <span> ${media.title} </span>
+        <img src="/assets/portfolio/medium/${media.image}">
+        `
+    imageSection.innerHTML = html
+    document.querySelector('.section_media').prepend(imageSection)
+        // console.log(media.image)
+})
