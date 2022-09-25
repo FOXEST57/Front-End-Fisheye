@@ -33,6 +33,13 @@ h1 {
     border-radius: 5px;
 }
 
+.movie {
+    height: 100%;
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+    border-radius: 5px;
+}
 .logo {
     height: 40px;
     margin-left: 100px;

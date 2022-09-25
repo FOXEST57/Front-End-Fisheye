@@ -26,6 +26,10 @@ const medias = data.media.filter(a => {
     return a.photographerId == id
 })
 
+const movie = data.media.filter(a => {
+    return a.photographerId == id
+})
+
 
 //afficher les données
 
@@ -55,8 +59,23 @@ medias.forEach(function(media) {
     const html = `
         <span> ${media.title} </span>
         <img class="picture" src="/assets/portfolio/medium/${media.image}">
+        
         `
     imageSection.innerHTML = html
     document.querySelector('.section_media').prepend(imageSection)
         // console.log(media.image)
 })
+
+// movie.forEach(function(media) {
+
+//     let videoSection = document.createElement('div')
+//     videoSection.className = "card_picture"
+//     const html = `
+//         <span> ${media.title} </span>
+//         <video class="movie" src="/assets/portfolio/video/${media.video}" type="video/mp4 />
+//         `
+//     videoSection.innerHTML = html
+//     document.querySelector('.section_media').prepend(videoSection)
+        
+// })
+// console.log('c', movie)
