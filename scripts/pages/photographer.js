@@ -15,7 +15,6 @@ function getId() {
 
 const data = await fetch('data/photographers.json').then(a => a.json())
 
-// console.log(data.photographers)
 
 //trier les données : le photographe +ses medias
 
@@ -28,17 +27,20 @@ const medias = data.media.filter(a => {
 })
 
 
-console.log('b', medias)
-
-medias.forEach(media => { console.log('c', media.image) })
-
-
 //afficher les données
 
-const photographerSection = document.createElement('section')
+const photographerPicture = document.createElement('div')
+
+const htmlPicture = `
+<img class= "photographer_picture" src="/assets/photographers/${photographer.portrait}">
+`
+photographerPicture.innerHTML = htmlPicture
+document.querySelector('.photograph-header').prepend(photographerPicture)
+
+
+const photographerSection = document.createElement('div')
 photographerSection.className = "photographer"
 const html = `
-<img class= "photographer_picture" src="/assets/photographers/${photographer.portrait}">
 <h1> ${photographer.name} </h1>
 <h2> ${photographer.city + ', ' + photographer.country}</h2>
 `
@@ -52,7 +54,7 @@ medias.forEach(function(media) {
     imageSection.className = "card_picture"
     const html = `
         <span> ${media.title} </span>
-        <img src="/assets/portfolio/medium/${media.image}">
+        <img class="picture" src="/assets/portfolio/medium/${media.image}">
         `
     imageSection.innerHTML = html
     document.querySelector('.section_media').prepend(imageSection)

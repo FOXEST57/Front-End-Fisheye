@@ -9,7 +9,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    height: 130px;
 }
 
 h1 {
@@ -25,7 +25,7 @@ h1 {
     width: 200px;
 }
 
-img {
+.picture {
     height: 100%;
     object-fit: cover;
     height: 300px;
@@ -34,7 +34,7 @@ img {
 }
 
 .logo {
-    height: 50px;
+    height: 40px;
     margin-left: 100px;
     border-radius: 0px;
 }
@@ -83,6 +83,7 @@ img {
 .section_media {
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-around ;
 }
 
 .card_picture {
@@ -90,3 +91,20 @@ img {
     flex-direction: column-reverse;
     padding: 4%;
 }
+
+.photograph-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+    
+}
+
+.contact_button {
+    order: 1;
+}
+
+.photographer {
+    order: 2;
+}
+
