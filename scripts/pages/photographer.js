@@ -1,39 +1,49 @@
-// recupérere iD
+import Image from '/scripts/factories/Image.js';
+import Video from '/scripts/factories/Video.js';
+
+// recupérer iD
 const id = getId()
+// recuperer les données
+const data = await fetch('data/photographers.json').then(a => a.json())
+//trier les données : le photographe + ses medias
+const photographer = data.photographers.find(a => a.id == id)
+const medias = build(data);
+
+//afficher les détails du photographe
+displayProfile(photographer);
+//affiche les medias du photographe
+displayMedias(medias)
+
+
+function build(data)
+{
+    const mediasRaw = data.media.filter(a => a.photographerId == id)
+    const medias = []
+    mediasRaw.forEach(mediasRaw =>
+    {
+        let media;
+        if(mediasRaw.image)
+        {
+            media = new Image(mediasRaw);
+        }else
+        {
+            media = new Video(mediasRaw);
+        }
+        medias.push(media)
+    })
+    return medias;
+
+}
 
 function getId() {
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
-
     return Number(params.id);
-
 }
 
-// recuperer les données
-
-
-const data = await fetch('data/photographers.json').then(a => a.json())
-
-
-//trier les données : le photographe +ses medias
-
-const photographer = data.photographers.find(a => a.id == id)
-console.log('a', photographer)
-
-
-const medias = data.media.filter(a => {
-    return a.photographerId == id
-})
-
-const movie = data.media.filter(a => {
-    return a.photographerId == id
-})
-
-
-//afficher les données
-
-const photographerPicture = document.createElement('div')
+function displayProfile(photographer){
+    const photographerPicture = document.createElement('div')
 
 const htmlPicture = `
 <img class= "photographer_picture" src="/assets/photographers/${photographer.portrait}">
@@ -51,31 +61,15 @@ const html = `
 photographerSection.innerHTML = html
 document.querySelector('.photograph-header').prepend(photographerSection)
 
+}
 
-medias.forEach(function(media) {
 
-    let imageSection = document.createElement('div')
-    imageSection.className = "card_picture"
-    const html = `
-        <span> ${media.title} </span>
-        <img class="picture" src="/assets/portfolio/medium/${media.image}">
-        
-        `
-    imageSection.innerHTML = html
-    document.querySelector('.section_media').prepend(imageSection)
-        // console.log(media.image)
-})
-
-// movie.forEach(function(media) {
-
-//     let videoSection = document.createElement('div')
-//     videoSection.className = "card_picture"
-//     const html = `
-//         <span> ${media.title} </span>
-//         <video class="movie" src="/assets/portfolio/video/${media.video}" type="video/mp4 />
-//         `
-//     videoSection.innerHTML = html
-//     document.querySelector('.section_media').prepend(videoSection)
-        
-// })
-// console.log('c', movie)
+function displayMedias(medias)
+{
+    medias.forEach(function(media) {
+        let imageSection = document.createElement('div')
+        imageSection.className = "card_picture" 
+        imageSection.innerHTML = media.buildHtml()
+        document.querySelector('.section_media').prepend(imageSection)
+    })
+}
