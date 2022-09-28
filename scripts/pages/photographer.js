@@ -13,9 +13,10 @@ const medias = build(data);
 displayProfile(photographer);
 //affiche les medias du photographe
 displayMedias(medias);
-
 //permet d'ajourter ou d'enlever un like
 listenForLikes(medias);
+countTotalLikes(medias);
+
 function listenForLikes(medias)
 {
 medias.forEach(media =>
@@ -25,8 +26,23 @@ medias.forEach(media =>
         {
             media.toogleLike();
             //fonction de image ou video
+            countTotalLikes(medias);
         })
 })
+}
+
+function countTotalLikes(medias)
+{
+    const total = medias.reduce((acc, media) => acc += media.likes, 0);
+    const totalLike = document.createElement('div')
+   
+    // document.querySelector('div').innerText = total
+
+    // let total = 0
+    // medias.forEach(media =>
+    //     {
+    //         total = total + media.likes
+    //     })
 }
 
 

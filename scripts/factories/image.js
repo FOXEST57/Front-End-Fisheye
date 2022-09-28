@@ -38,7 +38,7 @@ class Image
                 this.hasBeenLiked = true;
                 
             }
-            console.log(this.hasBeenLiked)
+           
             document.querySelector(`div[data-id="${this.id}"] .like_picture`).innerHTML = this.likes
     }
 
