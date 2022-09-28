@@ -10,13 +10,7 @@ class Video extends Media
     buildHtml()
     {
         return`
-        <div class="like" data-id="${this.id}">
-            <span class="title"> ${this.title} </span>
-            <span> 
-                <span class="like_picture"> ${this.likes}</span> 
-                <span class="heart"> <i class="fa-solid fa-heart"></i></span>
-            </span>        
-        </div>
+            ${this.rederWrapper()}
             <video  src="/assets/portfolio/video/${this.video}" class="movie" controls autoplay>
         `
     }

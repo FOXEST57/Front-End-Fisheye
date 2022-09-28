@@ -1,5 +1,4 @@
-import Image from '/scripts/models/Image.js';
-import Video from '/scripts/models/Video.js';
+import MediaFactory from "../factories/MediaFactory.js";
 
 // recupérer iD
 const id = getId()
@@ -9,26 +8,36 @@ const data = await fetch('data/photographers.json').then(a => a.json())
 const photographer = data.photographers.find(a => a.id == id)
 const medias = build(data);
 
+
 //afficher les détails du photographe
 displayProfile(photographer);
 //affiche les medias du photographe
 displayMedias(medias);
-//permet d'ajourter ou d'enlever un like
+//fait le trie 
+// buidDopdownSorting();
+//permet d'ajouter ou d'enlever un like
 listenForLikes(medias);
+//mise à jour du nombre de like
 countTotalLikes(medias);
+// //ecoute le bouton pour le tri
+// listenForSorting()
+
+
+
+
 
 function listenForLikes(medias)
 {
-medias.forEach(media =>
-{
+    medias.forEach(media =>
+    {
         const likeButton = document.querySelector(`div[data-id="${media.id}"] .heart`)
         likeButton.addEventListener('click',() =>
         {
             media.toogleLike();
-            //fonction de image ou video
+             //fonction de image ou video
             countTotalLikes(medias);
         })
-})
+    })
 }
 
 function countTotalLikes(medias)
@@ -43,25 +52,17 @@ function countTotalLikes(medias)
     //     })
 }
 
-
 function build(data)
 {
     const mediasRaw = data.media.filter(a => a.photographerId == id)
     const medias = []
-    mediasRaw.forEach(mediasRaw =>
+    const mediaFactory = new MediaFactory();
+    mediasRaw.forEach(mediaRaw =>
     {
-        let media;
-        if(mediasRaw.image)
-        {
-            media = new Image(mediasRaw);
-        }else
-        {
-            media = new Video(mediasRaw);
-        }
+        let media = mediaFactory.build(mediaRaw) 
         medias.push(media)
     })
     return medias;
-
 }
 
 function getId() {
@@ -71,12 +72,12 @@ function getId() {
     return Number(params.id);
 }
 
-function displayProfile(photographer){
+function displayProfile(photographer)
+{
     const photographerPicture = document.createElement('div')
-
-const htmlPicture = `
-<img class= "photographer_picture" src="/assets/photographers/${photographer.portrait}">
-`
+    const htmlPicture = `
+        <img class= "photographer_picture" src="/assets/photographers/${photographer.portrait}">
+        `
 photographerPicture.innerHTML = htmlPicture
 document.querySelector('.photograph-header').prepend(photographerPicture)
 
@@ -92,7 +93,6 @@ document.querySelector('.photograph-header').prepend(photographerSection)
 
 }
 
-
 function displayMedias(medias)
 {
     medias.forEach(function(media) {
@@ -102,3 +102,20 @@ function displayMedias(medias)
         document.querySelector('.section_media').prepend(imageSection)
     })
 }
+
+// function buidDopdownSorting()
+// {
+//     let element = document.createElement('div');
+//     element.innerHTML = `
+//     <span class="sortButton">Titre</span>
+//     <span class="sortButton">Popularité</span>
+//     <span class="sortButton">Date</span>
+//     `
+//     document.querySelector('.section_media').prepend(element)
+// }
+
+// function listenForSorting()
+// {
+//     document.querySelectorAll
+
+// }

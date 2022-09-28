@@ -11,13 +11,7 @@ class Image extends Media
     buildHtml()
     {
         return`
-        <div class="like" data-id="${this.id}">
-            <span class="title"> ${this.title} </span>
-            <span> 
-                <span class="like_picture"> ${this.likes}</span> 
-                <span class="heart"> <i class="fa-solid fa-heart"></i></span>
-            </span>  
-        </div>
+        ${this.rederWrapper()}
         <img class="picture" src="/assets/portfolio/medium/${this.image}">
         `
     }
