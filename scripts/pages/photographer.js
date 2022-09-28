@@ -12,7 +12,22 @@ const medias = build(data);
 //afficher les détails du photographe
 displayProfile(photographer);
 //affiche les medias du photographe
-displayMedias(medias)
+displayMedias(medias);
+
+//permet d'ajourter ou d'enlever un like
+listenForLikes(medias);
+function listenForLikes(medias)
+{
+medias.forEach(media =>
+{
+        const likeButton = document.querySelector(`div[data-id="${media.id}"] .heart`)
+        likeButton.addEventListener('click',() =>
+        {
+            media.toogleLike();
+            //fonction de image ou video
+        })
+})
+}
 
 
 function build(data)

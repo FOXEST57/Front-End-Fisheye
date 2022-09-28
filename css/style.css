@@ -110,8 +110,24 @@ h1 {
 .contact_button {
     order: 1;
 }
-
 .photographer {
     order: 2;
 }
+.title_picture{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.like {
+    display: flex;
+    justify-content: space-between;
+}
+.heart{
+    color: #901C1C;
+    
+}
+.title{
+    width: auto;
+}
+
 
