@@ -1,5 +1,5 @@
-import Image from '/scripts/factories/Image.js';
-import Video from '/scripts/factories/Video.js';
+import Image from '/scripts/models/Image.js';
+import Video from '/scripts/models/Video.js';
 
 // recupérer iD
 const id = getId()
@@ -34,9 +34,7 @@ medias.forEach(media =>
 function countTotalLikes(medias)
 {
     const total = medias.reduce((acc, media) => acc += media.likes, 0);
-    const totalLike = document.createElement('div')
-   
-    // document.querySelector('div').innerText = total
+    // document.querySelector('h1').innerText = total
 
     // let total = 0
     // medias.forEach(media =>
