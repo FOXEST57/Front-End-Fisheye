@@ -14,13 +14,13 @@ displayProfile(photographer);
 //affiche les medias du photographe
 displayMedias(medias);
 //fait le trie 
-// buidDopdownSorting();
+buidDopdownSorting();
 //permet d'ajouter ou d'enlever un like
 listenForLikes(medias);
 //mise à jour du nombre de like
 countTotalLikes(medias);
 // //ecoute le bouton pour le tri
-// listenForSorting()
+listenForSorting(medias)
 
 
 
@@ -95,6 +95,7 @@ document.querySelector('.photograph-header').prepend(photographerSection)
 
 function displayMedias(medias)
 {
+    document.querySelector('.section_media').innerHTML = '';
     medias.forEach(function(media) {
         let imageSection = document.createElement('div')
         imageSection.className = "card_picture" 
@@ -103,19 +104,95 @@ function displayMedias(medias)
     })
 }
 
-// function buidDopdownSorting()
-// {
-//     let element = document.createElement('div');
-//     element.innerHTML = `
-//     <span class="sortButton">Titre</span>
-//     <span class="sortButton">Popularité</span>
-//     <span class="sortButton">Date</span>
-//     `
-//     document.querySelector('.section_media').prepend(element)
-// }
+function buidDopdownSorting()
+{
+    let element = document.createElement('div');
+    element.innerHTML = `
+    <span class="sortButton" data-id="title">Titre</span>
+    <span class="sortButton" data-id="popularity">Popularité</span>
+    <span class="sortButton" data-id="date">Date</span>
+    `
+    document.querySelector('.section_media').prepend(element)
+}
 
-// function listenForSorting()
-// {
-//     document.querySelectorAll
+function listenForSorting(medias)
+{
+    document.querySelectorAll('.sortButton').forEach(button =>
+    {
+        button.addEventListener('click', () =>
+        {
+            let order = button.dataset.id;
+            let mediaSorted = []
+            if (order === 'popularity')
+            {
+                mediaSorted = sortByPopularity(medias)    
+            }
+            if (order === 'title')
+            {
+                mediaSorted = sortByTitle(medias)
+            }
+            if (order === 'date')
+            {
+                mediaSorted = sortByDate(mediaSorted)   
+            }
+            displayMedias(mediaSorted);
+            buidDopdownSorting()
+            listenForLikes(mediaSorted);
+            listenForSorting(mediaSorted);
+          
+            
+        })
+    })
 
-// }
+}
+
+function sortByPopularity(medias)
+{
+    return medias.sort((a,b) =>
+    {
+        if(a.likes > b.likes)
+        {
+            return -1
+        }
+        if(a.likes < b.likes)
+        {
+            return 1
+        }
+        return 0;
+    })
+
+}
+
+function sortByTitle(medias)
+{
+    return medias.sort((a,b) =>
+    {
+        if(a.title > b.title)
+        {
+            return -1
+        }
+        if(a.title < b.title)
+        {
+            return 1
+        }
+        return 0;
+    })
+
+}
+
+function sortByDate(medias)
+{
+    return medias.sort((a,b) =>
+    {
+        if(a.date > b.date)
+        {
+            return -1
+        }
+        if(a.date < b.date)
+        {
+            return 1
+        }
+        return 0;
+    })
+
+}

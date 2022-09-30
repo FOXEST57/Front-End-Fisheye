@@ -14,7 +14,6 @@ class Media
     
     toogleLike()
     {
-
             if (this.hasBeenLiked)
             {
                 this.likes--;
