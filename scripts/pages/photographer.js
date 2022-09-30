@@ -18,7 +18,7 @@ buidDopdownSorting();
 //permet d'ajouter ou d'enlever un like
 listenForLikes(medias);
 //mise à jour du nombre de like
-countTotalLikes(medias);
+countTotalLikes(medias, photographer);
 // //ecoute le bouton pour le tri
 listenForSorting(medias)
 
@@ -40,16 +40,20 @@ function listenForLikes(medias)
     })
 }
 
-function countTotalLikes(medias)
+function countTotalLikes(medias, photographer)
 {
     const total = medias.reduce((acc, media) => acc += media.likes, 0);
-    // document.querySelector('h1').innerText = total
-
-    // let total = 0
-    // medias.forEach(media =>
-    //     {
-    //         total = total + media.likes
-    //     })
+    const totalLike = document.createElement('div')
+    totalLike.className = "totalLike"
+    const html = `
+    <h2 class="photographerLikes"> ${total} </h2>
+    <i class="fa-solid fa-heart"></i>
+    <h3 class="photographerPrice"> ${photographer.price + ' € / jour '} </h3>
+    `
+    console.log(totalLike)
+    totalLike.innerHTML = html
+    document.querySelector('main').prepend(totalLike)
+  
 }
 
 function build(data)
@@ -106,13 +110,19 @@ function displayMedias(medias)
 
 function buidDopdownSorting()
 {
+   
     let element = document.createElement('div');
+    element.className ="wrapTry"
+    
     element.innerHTML = `
+    <span class="titleButton">Trier par</span>
+    <div class="tryButton">
     <span class="sortButton" data-id="title">Titre</span>
     <span class="sortButton" data-id="popularity">Popularité</span>
     <span class="sortButton" data-id="date">Date</span>
+    <div/>
     `
-    document.querySelector('.section_media').prepend(element)
+    document.querySelector('main').prepend(element)
 }
 
 function listenForSorting(medias)
@@ -140,7 +150,6 @@ function listenForSorting(medias)
             listenForLikes(mediaSorted);
             listenForSorting(mediaSorted);
           
-            
         })
     })
 
