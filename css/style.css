@@ -221,11 +221,20 @@ h2 {
 .arrow {
     font-size: 50px;
     padding: 0px 20px;
+    border: none;
+    background-color: white;
+    color: #901C1C;
+    font-weight: 700;
 }
 
 .lightbox-media {
-    min-width: 300px;
-    background-color: #901C1C;
+
+    height: 700px;
+    object-fit: ;
+    display: flex;
+    align-items: center;
+    
+    
 }
 
 .slider-close {
@@ -233,10 +242,15 @@ h2 {
     top: 10px;
     right: 30px;
     font-size: 50px;
+    border: none;
+    background-color: white;
+    color: #901C1C;
+    font-weight: 700;
 }
 
 .media-slider {
     width: 100%;
+    height: 90%;
 }
 
 

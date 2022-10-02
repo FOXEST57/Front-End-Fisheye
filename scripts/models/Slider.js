@@ -47,11 +47,12 @@ class Slider
         //    let arr1=[0, 2, 1, 5, 8];  
         //     const getLastArrItem = (arr) => { 
         //     let lastItem=arr[arr.length-1];  
-
+        //     console.log(`Last element is ${lastItem}`); 
+        //     }  
         //     getLastArrItem(arr1); 
            let newIndex = currentindex - 1;
 
-           if (newIndex  0 )
+           if (newIndex = 0 )
            {
                 newIndex = (arr) => {
                 let lastItem=arr[arr.length-1];     
