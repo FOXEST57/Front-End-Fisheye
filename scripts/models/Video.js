@@ -11,8 +11,13 @@ class Video extends Media
     {
         return`
             ${this.rederWrapper()}
-            <video  src="/assets/portfolio/video/${this.video}" class="movie" controls autoplay>
+            <video  src="/assets/portfolio/video/${this.video}" class="movie media" controls autoplay>
         `
+    }
+
+    getSlide()
+    {
+      return`<video  src="/assets/portfolio/video/${this.video}" class="media-slider" data-id="${this.id}" controls autoplay>`  
     }
 }
 

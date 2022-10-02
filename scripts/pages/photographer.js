@@ -1,10 +1,11 @@
 import MediaFactory from "../factories/MediaFactory.js";
+import Slider from "../models/Slider.js";
 
-// recupérer iD
+// recupère iD
 const id = getId()
-// recuperer les données
+// recupère les données
 const data = await fetch('data/photographers.json').then(a => a.json())
-//trier les données : le photographe + ses medias
+//tri les données : le photographe + ses medias
 const photographer = data.photographers.find(a => a.id == id)
 const medias = build(data);
 
@@ -13,14 +14,20 @@ const medias = build(data);
 displayProfile(photographer);
 //affiche les medias du photographe
 displayMedias(medias);
-//fait le trie 
+//affiche le nombre total de like et le prix du photographe
+displayTotalLikes(photographer)
+//bouton pour faire le tri
 buidDopdownSorting();
 //permet d'ajouter ou d'enlever un like
 listenForLikes(medias);
 //mise à jour du nombre de like
-countTotalLikes(medias, photographer);
-// //ecoute le bouton pour le tri
-listenForSorting(medias)
+countTotalLikes(medias);
+//ecoute le bouton pour le tri
+listenForSorting(medias);
+
+let slider = new Slider(medias);
+
+
 
 
 
@@ -34,26 +41,29 @@ function listenForLikes(medias)
         likeButton.addEventListener('click',() =>
         {
             media.toogleLike();
-             //fonction de image ou video
             countTotalLikes(medias);
         })
     })
 }
 
-function countTotalLikes(medias, photographer)
+function countTotalLikes(medias)
 {
     const total = medias.reduce((acc, media) => acc += media.likes, 0);
+    document.querySelector('.photographerLikes').innerHTML = total
+     
+}
+
+function displayTotalLikes(photographer)
+{
     const totalLike = document.createElement('div')
     totalLike.className = "totalLike"
     const html = `
-    <h2 class="photographerLikes"> ${total} </h2>
-    <i class="fa-solid fa-heart"></i>
-    <h3 class="photographerPrice"> ${photographer.price + ' € / jour '} </h3>
-    `
-    console.log(totalLike)
+        <h2 class="photographerLikes"> 0 </h2>
+        <i class="fa-solid fa-heart"></i>
+        <h3 class="photographerPrice"> ${photographer.price + ' € / jour '} </h3>
+        `
     totalLike.innerHTML = html
-    document.querySelector('main').prepend(totalLike)
-  
+    document.querySelector('main').prepend(totalLike)  
 }
 
 function build(data)
@@ -89,9 +99,9 @@ document.querySelector('.photograph-header').prepend(photographerPicture)
 const photographerSection = document.createElement('div')
 photographerSection.className = "photographer"
 const html = `
-<h1> ${photographer.name} </h1>
-<h2> ${photographer.city + ', ' + photographer.country}</h2>
-`
+    <h1> ${photographer.name} </h1>
+    <h2> ${photographer.city + ', ' + photographer.country}</h2>
+    `
 photographerSection.innerHTML = html
 document.querySelector('.photograph-header').prepend(photographerSection)
 
@@ -104,7 +114,7 @@ function displayMedias(medias)
         let imageSection = document.createElement('div')
         imageSection.className = "card_picture" 
         imageSection.innerHTML = media.buildHtml()
-        document.querySelector('.section_media').prepend(imageSection)
+        document.querySelector('.section_media').append(imageSection)
     })
 }
 
@@ -117,9 +127,9 @@ function buidDopdownSorting()
     element.innerHTML = `
     <span class="titleButton">Trier par</span>
     <div class="tryButton">
-    <span class="sortButton" data-id="title">Titre</span>
-    <span class="sortButton" data-id="popularity">Popularité</span>
-    <span class="sortButton" data-id="date">Date</span>
+        <span class="sortButton" data-id="title">Titre</span>
+        <span class="sortButton" data-id="popularity">Popularité</span>
+        <span class="sortButton" data-id="date">Date</span>
     <div/>
     `
     document.querySelector('main').prepend(element)
@@ -143,12 +153,11 @@ function listenForSorting(medias)
             }
             if (order === 'date')
             {
-                mediaSorted = sortByDate(mediaSorted)   
+                mediaSorted = sortByDate(medias)   
             }
             displayMedias(mediaSorted);
-            buidDopdownSorting()
             listenForLikes(mediaSorted);
-            listenForSorting(mediaSorted);
+            slider.hydrate(mediaSorted);
           
         })
     })
@@ -176,11 +185,11 @@ function sortByTitle(medias)
 {
     return medias.sort((a,b) =>
     {
-        if(a.title > b.title)
+        if(a.title < b.title)
         {
             return -1
         }
-        if(a.title < b.title)
+        if(a.title > b.title)
         {
             return 1
         }
@@ -191,8 +200,11 @@ function sortByTitle(medias)
 
 function sortByDate(medias)
 {
-    return medias.sort((a,b) =>
+    return medias.sort((mediaA, mediaB) =>
     {
+        const a = mediaA.date.replace(/-/gi, '');
+        const b = mediaB.date.replace(/-/gi, '');
+        
         if(a.date > b.date)
         {
             return -1
@@ -203,5 +215,5 @@ function sortByDate(medias)
         }
         return 0;
     })
-
+    
 }

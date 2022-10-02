@@ -12,8 +12,13 @@ class Image extends Media
     {
         return`
         ${this.rederWrapper()}
-        <img class="picture" src="/assets/portfolio/medium/${this.image}">
+        <img class="picture media" src="/assets/portfolio/medium/${this.image}">
         `
+    }
+
+    getSlide()
+    {
+        return `<img class="media-slider" data-id="${this.id}"  src="/assets/portfolio/medium/${this.image}"></img>`
     }
    
 }
