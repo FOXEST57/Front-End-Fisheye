@@ -1,6 +1,7 @@
 import MediaFactory from "../factories/MediaFactory.js";
 import Slider from "../models/Slider.js";
 
+
 // recupère iD
 const id = getId()
 // recupère les données

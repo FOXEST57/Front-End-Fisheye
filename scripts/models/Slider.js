@@ -44,20 +44,16 @@ class Slider
            const currentId = Number(document.querySelector('.media-slider').dataset.id);
            const currentindex = this.all.findIndex(a => a.id === currentId)
 
-        //    let arr1=[0, 2, 1, 5, 8];  
-        //     const getLastArrItem = (arr) => { 
-        //     let lastItem=arr[arr.length-1];  
-        //     console.log(`Last element is ${lastItem}`); 
-        //     }  
-        //     getLastArrItem(arr1); 
            let newIndex = currentindex - 1;
 
-           if (newIndex = 0 )
+           if (newIndex > (this.all.length) - 1)
            {
-                newIndex = (arr) => {
-                let lastItem=arr[arr.length-1];     
-                }
-                newIndex(medias);
+            const getLastArrItem = (arr) => { 
+                    let lastItem=arr[arr.length-1]; 
+                    console.log(`Last element is ${lastItem}`);
+                }  
+                    getLastArrItem(this.all.length); 
+               
            }
            const newMedia = this.all[newIndex]
            this.show(newMedia);
