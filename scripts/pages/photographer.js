@@ -1,6 +1,6 @@
 import MediaFactory from "../factories/MediaFactory.js";
 import Slider from "../models/Slider.js";
-
+//import { displayModal, closeModal } from "../utils/contactForm.js";
 
 // recupère iD
 const id = getId()
@@ -8,8 +8,9 @@ const id = getId()
 const data = await fetch('data/photographers.json').then(a => a.json())
 //tri les données : le photographe + ses medias
 const photographer = data.photographers.find(a => a.id == id)
-const medias = build(data);
+const medias = build(data, photographer);
 
+//console.log(displayModal());
 
 //afficher les détails du photographe
 displayProfile(photographer);
@@ -25,8 +26,11 @@ listenForLikes(medias);
 countTotalLikes(medias);
 //ecoute le bouton pour le tri
 listenForSorting(medias);
+listenForDropdownOpening();
 
-let slider = new Slider(medias);
+let slider = new Slider();
+slider.hydrate(medias);
+slider.listen()
 
 
 
@@ -67,11 +71,11 @@ function displayTotalLikes(photographer)
     document.querySelector('main').prepend(totalLike)  
 }
 
-function build(data)
+function build(data, photographer)
 {
     const mediasRaw = data.media.filter(a => a.photographerId == id)
     const medias = []
-    const mediaFactory = new MediaFactory();
+    const mediaFactory = new MediaFactory(photographer);
     mediasRaw.forEach(mediaRaw =>
     {
         let media = mediaFactory.build(mediaRaw) 
@@ -93,19 +97,20 @@ function displayProfile(photographer)
     const htmlPicture = `
         <img class= "photographer_picture" src="/assets/photographers/${photographer.portrait}">
         `
-photographerPicture.innerHTML = htmlPicture
-document.querySelector('.photograph-header').prepend(photographerPicture)
+    photographerPicture.innerHTML = htmlPicture
+    document.querySelector('.photograph-header').prepend(photographerPicture)
 
 
-const photographerSection = document.createElement('div')
-photographerSection.className = "photographer"
-const html = `
-    <h1> ${photographer.name} </h1>
-    <h2> ${photographer.city + ', ' + photographer.country}</h2>
-    `
-photographerSection.innerHTML = html
-document.querySelector('.photograph-header').prepend(photographerSection)
+    const photographerSection = document.createElement('div')
+    photographerSection.className = "photographer"
+    const html = `
+        <h1> ${photographer.name} </h1>
+        <h2> ${photographer.city + ', ' + photographer.country}</h2>
+            `
+    photographerSection.innerHTML = html
+    document.querySelector('.photograph-header').prepend(photographerSection)
 
+    document.querySelector('#photographerName').innerText = photographer.name
 }
 
 function displayMedias(medias)
@@ -127,13 +132,24 @@ function buidDopdownSorting()
     
     element.innerHTML = `
     <span class="titleButton">Trier par</span>
-    <div class="tryButton">
-        <span class="sortButton" data-id="title">Titre</span>
-        <span class="sortButton" data-id="popularity">Popularité</span>
-        <span class="sortButton" data-id="date">Date</span>
+    <div class="currentOrder">Popularité</div>
+    <div class="options">
+        <span class="sortButton" data-id="Titre">Titre</span>
+        <span class="sortButton" data-id="Popularité">Popularité</span>
+        <span class="sortButton" data-id="Date">Date</span>
     <div/>
     `
     document.querySelector('main').prepend(element)
+    document.querySelector('.options').style.display = 'none';
+}
+
+function listenForDropdownOpening()
+{
+    document.querySelector('.currentOrder').addEventListener('click', () =>
+    {
+        document.querySelector('.currentOrder').style.display = 'none';
+        document.querySelector('.options').style.display = 'block';
+    })
 }
 
 function listenForSorting(medias)
@@ -142,24 +158,28 @@ function listenForSorting(medias)
     {
         button.addEventListener('click', () =>
         {
+            document.querySelector('.currentOrder').style.display = 'block';
+            document.querySelector('.options').style.display = 'none';
+
             let order = button.dataset.id;
             let mediaSorted = []
-            if (order === 'popularity')
+            document.querySelector('.currentOrder').innerText = order
+            if (order === 'Popularité')
             {
                 mediaSorted = sortByPopularity(medias)    
             }
-            if (order === 'title')
+            if (order === 'Titre')
             {
                 mediaSorted = sortByTitle(medias)
             }
-            if (order === 'date')
+            if (order === 'Date')
             {
                 mediaSorted = sortByDate(medias)   
             }
             displayMedias(mediaSorted);
             listenForLikes(mediaSorted);
             slider.hydrate(mediaSorted);
-          
+            slider.listen()
         })
     })
 
@@ -206,11 +226,11 @@ function sortByDate(medias)
         const a = mediaA.date.replace(/-/gi, '');
         const b = mediaB.date.replace(/-/gi, '');
         
-        if(a.date > b.date)
+        if(a > b)
         {
             return -1
         }
-        if(a.date < b.date)
+        if(a < b)
         {
             return 1
         }
