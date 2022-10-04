@@ -18,7 +18,7 @@ background-color: green;
     margin: 0 100px;
 }
 
-.contact_button {
+.contact_button, #submit_button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -41,21 +41,46 @@ background-color: green;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    margin-top: 20px;
+
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: 70%;
+    
 }
+
 
 .modal header img {
     cursor: pointer;
+    position: relative;
+    
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 47px;
     font-weight: normal;
     text-align: center;
+}
+
+.modaltitle {
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+}
+
+#photographerName {
+    width: 100%;
+    margin-top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 47px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-bottom: 15px;
 }
 
 form {
@@ -63,12 +88,13 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    margin-right: 20px;
 }
 
 form label {
     color: #312E2E;
-    font-size: 26px;
-    margin-top: 20px;
+    font-size: 24px;
+   
 }
 
 form div {
@@ -76,7 +102,7 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 15px;
 }
 
 form input {
@@ -85,14 +111,15 @@ form input {
     border: none;
     border-radius: 5px;
     font-size: 20px;
-    padding: 15px;
+    padding: 5px;
 }
 form textarea  {
     width: 100%;
-    height: 122px;
+    height: 70px;
     border: none;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 20px;
-    padding: 15px;
+    padding: 15px 15px 0px 0px;
+    
 }

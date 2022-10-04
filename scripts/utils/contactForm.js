@@ -13,7 +13,6 @@ function closeModal() {
 document.querySelector('#submit_button').addEventListener('click', (e) =>
 {
     e.preventDefault();
-    console.log('on check le formulaire')
     const firstNameEl = document.querySelector('#firstname');
     const lastNameEl = document.querySelector('#lastname');
     const emailEl = document.querySelector('#email');
@@ -27,6 +26,7 @@ document.querySelector('#submit_button').addEventListener('click', (e) =>
             email: emailEl.value,
             message: messageEl.value,
         })
+        closeModal()
     }    
     
 })
@@ -84,7 +84,7 @@ function showError(el)
 function hideError(el)
 {
     const p = el.closest('.form-group').querySelector('p.error');
-    console.log(p)
+    
     if (p)
     {
         p.remove()
