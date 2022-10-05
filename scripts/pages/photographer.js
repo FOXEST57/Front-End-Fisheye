@@ -1,4 +1,4 @@
-import MediaFactory from "../factories/MediaFactory.js";
+import MediaFactory from "../factories/media.js";
 import Slider from "../models/Slider.js";
 //import { displayModal, closeModal } from "../utils/contactForm.js";
 
