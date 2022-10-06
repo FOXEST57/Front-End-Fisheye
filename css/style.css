@@ -151,6 +151,7 @@ h2 {
 #main{
     display: flex;
     flex-direction: column;
+  
 }
 .photograph-header{
     order: 0;
@@ -186,7 +187,14 @@ h2 {
     background-color: #Db8876;
     border-radius: 4px 4px 0 0;    
 }
+.photographerName {
+    color: #D3573C;
+    font-weight: 400;
+}
 
+.photographerCity {
+    color: #901C1C;
+}
 .photographerLikes {
     margin-left: 2%;
     margin-right: 3%;

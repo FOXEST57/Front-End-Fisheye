@@ -104,8 +104,9 @@ function displayProfile(photographer)
     const photographerSection = document.createElement('div')
     photographerSection.className = "photographer"
     const html = `
-        <h1> ${photographer.name} </h1>
-        <h2> ${photographer.city + ', ' + photographer.country}</h2>
+        <h1 class="photographerName"> ${photographer.name} </h1>
+        <h2 class="photographerCity"> ${photographer.city + ', ' + photographer.country}</h2>
+        <p> ${photographer.tagline} </p>
             `
     photographerSection.innerHTML = html
     document.querySelector('.photograph-header').prepend(photographerSection)
