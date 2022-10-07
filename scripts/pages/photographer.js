@@ -137,7 +137,7 @@ function buidDopdownSorting()
     <div class="options">
         <span class="sortButton" data-id="Titre">Titre</span>
         <span class="sortButton" data-id="Popularité">Popularité</span>
-        <span class="sortButton" data-id="Date">Date</span>
+        <span class="sortButton date" data-id="Date">Date</span>
     <div/>
     `
     document.querySelector('main').prepend(element)

@@ -135,6 +135,7 @@ h2 {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    
 }
 .like {
     display: flex;
@@ -146,6 +147,12 @@ h2 {
 }
 .title{
     width: auto;
+    color: #901C1C;
+    font-weight: 600;
+}
+.like_picture {
+    color: #901C1C;
+    font-weight: 600;
 }
 
 #main{
