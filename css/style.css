@@ -102,12 +102,6 @@ h2 {
     color: rgb(87, 86, 86);
     font-weight: 300 ;
 }
-.section_media {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-around ;
-    order: 3;
-}
 
 .card_picture {
     display: flex;
@@ -158,8 +152,19 @@ h2 {
 #main{
     display: flex;
     flex-direction: column;
+    position: relative;
   
 }
+
+.section_media {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around ;
+    order: 3;
+    position: absolute;
+    top: 50vh;
+}
+
 .photograph-header{
     order: 0;
 }
@@ -274,6 +279,9 @@ h2 {
 
 }
 
+.contact_button:hover{
+    background-color: #D3573C;
+}
 
 
 
