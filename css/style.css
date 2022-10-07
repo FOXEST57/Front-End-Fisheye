@@ -165,6 +165,13 @@ h2 {
     top: 50vh;
 }
 
+@media screen and (min-width : 350px) {
+    .section_media{
+        background-color: #D3573C;
+    }
+    
+}
+
 .photograph-header{
     order: 0;
 }
