@@ -1,7 +1,7 @@
 export default photographerFactory;
 
 
-
+// récupère les données et crée les éléments HTML
 
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
