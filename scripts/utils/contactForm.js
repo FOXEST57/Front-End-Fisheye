@@ -1,13 +1,13 @@
 
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "block";
+    const modal = document.getElementById('contact_modal');
+    modal.style.display = 'block';
     document.querySelector('#firstname').focus()
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    const modal = document.getElementById('contact_modal');
+    modal.style.display = 'none';
 }
 
 document.querySelector('#submit_button').addEventListener('click', (e) =>
@@ -30,7 +30,7 @@ document.querySelector('#submit_button').addEventListener('click', (e) =>
     }    
     
 })
-const modal = document.getElementById("contact_modal").style.display = "none";
+const modal = document.getElementById('contact_modal').style.display = 'none';
 
 
 function isNameValid(el)
@@ -38,7 +38,7 @@ function isNameValid(el)
     hideError(el)
     const name = el.value;
     let regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-    if (name.length < 2 || name === "" || !regex.test(name))
+    if (name.length < 2 || name === '' || !regex.test(name))
     {
         console.log(el, 'prob')
         showError(el)
@@ -65,7 +65,7 @@ function isEmailValid(el)
     hideError(el)
 
     let regex = /^\S+@\S+\.\S+$/;
-    if (!regex.test(mail) || mail == "")
+    if (!regex.test(mail) || mail == '')
     {
         showError(el)
         return false;
@@ -77,7 +77,7 @@ function showError(el)
 {
     const div = document.createElement('p')
     div.classList.add('error')
-    div.innerText = "Merci de corriger l'erreur."
+    div.innerText = 'Merci de corriger l erreur.'
     el.closest('.form-group').appendChild(div)
 }
 

@@ -14,7 +14,7 @@ class Media
     
     toogleLike()
     {
-        const heart = document.querySelector(`[data-id="${this.id}"] .heart .fa-heart`);
+        const heart = document.querySelector(`[data-id='${this.id}'] .heart .fa-heart`);
         if (this.hasBeenLiked)
         {
             this.likes--;
@@ -28,25 +28,25 @@ class Media
 
         this.hasBeenLiked = ! this.hasBeenLiked
         
-        document.querySelector(`div[data-id="${this.id}"] .like_picture`).innerHTML = this.likes
+        document.querySelector(`div[data-id='${this.id}'] .like_picture`).innerHTML = this.likes
         
     }
 
     rederWrapper()
     {
         return `
-        <div class="like" data-id="${this.id}">
-            <span class="title"> ${this.title} </span>
+        <div class='like' data-id='${this.id}'>
+            <span class='title'> ${this.title} </span>
             <span> 
-                <span class="like_picture"> ${this.likes}</span> 
-                <span class="heart"> <i class="fa-regular fa-heart"></i></span>
+                <span class='like_picture'> ${this.likes}</span> 
+                <span class='heart'> <i class='fa-regular fa-heart'></i></span>
             </span>        
         </div>`
     }
 
     showSlideDetails()
     {
-        return `<div class="slider-details">${this.title}</div>`
+        return `<div class='slider-details'>${this.title}</div>`
     }
 
 

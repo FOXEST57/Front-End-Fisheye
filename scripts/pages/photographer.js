@@ -1,6 +1,6 @@
-import MediaFactory from "../factories/media.js";
-import Slider from "../models/Slider.js";
-//import { displayModal, closeModal } from "../utils/contactForm.js";
+import MediaFactory from '../factories/media.js';
+import Slider from '../models/Slider.js';
+//import { displayModal, closeModal } from '../utils/contactForm.js';
 
 // recupère iD
 const id = getId()
@@ -42,7 +42,7 @@ function listenForLikes(medias)
 {
     medias.forEach(media =>
     {
-        const likeButton = document.querySelector(`div[data-id="${media.id}"] .heart`)
+        const likeButton = document.querySelector(`div[data-id='${media.id}'] .heart`)
         likeButton.addEventListener('click',() =>
         {
             media.toogleLike();
@@ -61,11 +61,11 @@ function countTotalLikes(medias)
 function displayTotalLikes(photographer)
 {
     const totalLike = document.createElement('div')
-    totalLike.className = "totalLike"
+    totalLike.className = 'totalLike'
     const html = `
-        <h2 class="photographerLikes"> 0 </h2>
-        <i class="fa-solid fa-heart"></i>
-        <h3 class="photographerPrice"> ${photographer.price + ' € / jour '} </h3>
+        <h2 class='photographerLikes'> 0 </h2>
+        <i class='fa-solid fa-heart'></i>
+        <h3 class='photographerPrice'> ${photographer.price + ' € / jour '} </h3>
         `
     totalLike.innerHTML = html
     document.querySelector('main').prepend(totalLike)  
@@ -95,17 +95,17 @@ function displayProfile(photographer)
 {
     const photographerPicture = document.createElement('div')
     const htmlPicture = `
-        <img class= "photographer_picture" src="/assets/photographers/${photographer.portrait}">
+        <img class= 'photographer_picture' src='/assets/photographers/${photographer.portrait}'>
         `
     photographerPicture.innerHTML = htmlPicture
     document.querySelector('.photograph-header').prepend(photographerPicture)
 
 
     const photographerSection = document.createElement('div')
-    photographerSection.className = "photographer"
+    photographerSection.className = 'photographer'
     const html = `
-        <h1 class="photographerName"> ${photographer.name} </h1>
-        <h2 class="photographerCity"> ${photographer.city + ', ' + photographer.country}</h2>
+        <h1 class='photographerName'> ${photographer.name} </h1>
+        <h2 class='photographerCity'> ${photographer.city + ', ' + photographer.country}</h2>
         <p> ${photographer.tagline} </p>
             `
     photographerSection.innerHTML = html
@@ -119,7 +119,7 @@ function displayMedias(medias)
     document.querySelector('.section_media').innerHTML = '';
     medias.forEach(function(media) {
         let imageSection = document.createElement('div')
-        imageSection.className = "card_picture" 
+        imageSection.className = 'card_picture' 
         imageSection.innerHTML = media.buildHtml()
         document.querySelector('.section_media').append(imageSection)
     })
@@ -129,15 +129,15 @@ function buidDopdownSorting()
 {
    
     let element = document.createElement('div');
-    element.className ="wrapTry"
+    element.className ='wrapTry'
     
     element.innerHTML = `
-    <span class="titleButton">Trier par</span>
-    <div class="currentOrder">Popularité</div>
-    <div class="options">
-        <span class="sortButton" data-id="Titre">Titre</span>
-        <span class="sortButton" data-id="Popularité">Popularité</span>
-        <span class="sortButton date" data-id="Date">Date</span>
+    <span class='titleButton'>Trier par</span>
+    <div class='currentOrder'>Popularité</div>
+    <div class='options'>
+        <span class='sortButton' data-id='Titre'>Titre</span>
+        <span class='sortButton' data-id='Popularité'>Popularité</span>
+        <span class='sortButton date' data-id='Date'>Date</span>
     <div/>
     `
     document.querySelector('main').prepend(element)

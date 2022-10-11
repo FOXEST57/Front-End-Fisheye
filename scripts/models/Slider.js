@@ -22,17 +22,17 @@ class Slider
         document.querySelector('.previous').addEventListener('click', () => { this.previous() })
         document.addEventListener('keydown', (e) =>
         {
-            if (e.key === "ArrowRight")
+            if (e.key === 'ArrowRight')
             {
                 this.next()
             }
             
-            if (e.key === "ArrowLeft")
+            if (e.key === 'ArrowLeft')
             {
                 this.previous()
             }
 
-            if (e.key === "Escape")
+            if (e.key === 'Escape')
             {
                 this.close()
             }

@@ -13,18 +13,18 @@ function photographerFactory(data) {
         article.setAttribute('href', 'photographer.html?id=' + id);
 
         const img = document.createElement('img');
-        img.className = "photographer_picture"
-        img.setAttribute("src", picture)
+        img.className = 'photographer_picture'
+        img.setAttribute('src', picture)
         const h2 = document.createElement('h2');
         h2.textContent = name;
         const ville = document.createElement('p');
-        ville.className = "city"
+        ville.className = 'city'
         ville.textContent = city + ',  ' + country;
         const descriptif = document.createElement('p');
-        descriptif.className = "descriptif"
+        descriptif.className = 'descriptif'
         descriptif.textContent = tagline;
         const prix = document.createElement('p');
-        prix.className = "price"
+        prix.className = 'price'
         prix.textContent = price + ' €/jour';
         article.appendChild(img);
         article.appendChild(h2);
