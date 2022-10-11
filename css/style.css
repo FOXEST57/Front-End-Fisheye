@@ -166,7 +166,7 @@ h2 {
     justify-content:space-around ;
     order: 3;
     position: absolute;
-    top: 20px;
+    top: 50px;
 }
 
 
@@ -178,6 +178,7 @@ h2 {
     order: 1;
     display: flex;
     margin-left: 9%;
+    z-index: 4;
 }
 
 .titleButton {

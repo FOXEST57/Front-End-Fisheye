@@ -19,18 +19,18 @@
    
     <main id="main">
         <div class="photograph-header">
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button class="contact_button" onclick="displayModal()" aria-label="Formulaire de contact">Contactez-moi</button>
         </div>
 
         <div class="section_media"></div>
     </main>
-    <div id="contact_modal" class="lightbox">
+    <div id="contact_modal" class="lightbox" >
         <div class="modal">
             <header>
                 
-                <h2 class="modaltitle">Contactez-moi</h2>
+                <h2 class="modaltitle" >Contactez-moi</h2>
                
-                <button><img src="assets/icons/close.svg" onclick="closeModal()" /></button>
+                <button class="button" onclick="closeModal()" id="close-modal"><img src="assets/icons/close.svg"  /></button>
             </header>
             <h3 id="photographerName"></h3>
             <form>
@@ -40,6 +40,7 @@
                   <input
                   id="firstname"
                   name="firstname"
+                  aria-label="entrez votre prenom"
                   />
                 </div>
                 <div class="form-group">
@@ -48,6 +49,7 @@
                   <input
                   id="lastname"
                   name="lastname"
+                  aria-label="entrez votre nom de famille"
                   />
                 </div>
                 <div class="form-group">
@@ -56,6 +58,7 @@
                   <input
                   id="email"
                   name="email"
+                  aria-label="entrez votre adresse email"
                   />
                 </div>
                 <div class="form-group">
@@ -64,9 +67,10 @@
                   <textarea
                   id="message"
                   name="message"
+                  aria-label="entrez votre message"
                   ></textarea>
                 </div>
-                    <button id="submit_button">Envoyer</button>
+                    <button id="submit_button" aria-label="envoyez votre message">Envoyer</button>
             </form>
         </div>
     </div>

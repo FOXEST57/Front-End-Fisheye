@@ -1,13 +1,25 @@
+const keyHandler = (e) => {
+    if (e.key === 'Escape')
+    {
+        closeModal()
+    }
+    if(e.key ==='Tab' && e.target.getAttribute('id') === 'submit_button')
+    {
+        document.getElementById('close-modal').focus()
+    }
+}
 
 function displayModal() {
     const modal = document.getElementById('contact_modal');
     modal.style.display = 'block';
     document.querySelector('#firstname').focus()
+    document.addEventListener('keydown', keyHandler) 
 }
 
 function closeModal() {
     const modal = document.getElementById('contact_modal');
     modal.style.display = 'none';
+    document.removeEventListener('keydown', keyHandler) 
     
 }
 

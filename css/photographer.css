@@ -1,9 +1,9 @@
 #contact_modal {
     display: none;
+    z-index: 4;
 }
 
-.titleButton{
-    
+.titleButton{ 
     padding-top: 10px;
     margin-top: 10px;
 }
@@ -14,10 +14,16 @@
     background-color: #901C1C;
     color: white;
     width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
 }
+
 
 .currentOrder:hover{
     background-color: #D3573C;
+    
 }
 
 
@@ -25,18 +31,20 @@
     margin-top: 10px;
     border-radius: 5px 5px 5px 5px;
     padding: 5px 10px 10px 10px;
-    display: block;
     background-color: #901C1C;
     z-index: 2;
 }
 
 
 .sortButton {
-    display: block;
     width: 100px;
     color: white;
     padding: 5px;
     border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
 }
 
 .date{
@@ -75,6 +83,7 @@
     padding: 35px;
     margin: auto;
     margin-top: 20px;
+   
 
 }
 
@@ -159,4 +168,9 @@ form textarea  {
     font-size: 20px;
     padding: 15px 15px 0px 0px;
     
+}
+
+.button{
+    background-color: transparent;
+    border: none;
 }

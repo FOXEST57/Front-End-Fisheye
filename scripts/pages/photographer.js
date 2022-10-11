@@ -16,9 +16,6 @@ const medias = build(data, photographer);
 displayProfile(photographer);
 //préparer le dom  du média
 prepareMediaDom()
-const div = document.createElement('div')
-div.classList.add('section_media-inner');
-document.querySelector('.section_media').append(div)
 //affiche les medias du photographe
 displayMedias(medias);
 //affiche le nombre total de like et le prix du photographe
@@ -133,15 +130,21 @@ function displayMedias(medias)
 function buidDopdownSorting()
 {
    
-    let element = document.createElement('div');
+    let element = document.createElement('a');
     element.className ='wrapTry'
     
     element.innerHTML = `
     <span class='titleButton'>Trier par</span>
-    <div class='currentOrder'>Popularité </div>
+    <a class='currentOrder' href='#'>
+         <span class ="currentOrderItem">Popularité </span>
+         <i class="fa far-regular fa-chevron-down"></i>
+    </a>
     <div class='options'>
-        <a class='sortButton' data-id='Titre'>Titre</a>
-        <a class='sortButton' data-id='Popularité'>Popularité</a>
+        <a class='sortButton' data-id='Titre'  href='#'>
+        <span>Titre</span>
+            <i class="fa far-regular fa-chevron-up" /></i>
+        </a>
+        <a class='sortButton' data-id='Popularité' >Popularité</a>
         <a class='sortButton date' data-id='Date'>Date</a>
     <div/>
     `
@@ -164,12 +167,12 @@ function listenForSorting(medias)
     {
         button.addEventListener('click', () =>
         {
-            document.querySelector('.currentOrder').style.display = 'block';
+            document.querySelector('.currentOrder').style.display = 'flex';
             document.querySelector('.options').style.display = 'none';
 
             let order = button.dataset.id;
             let mediaSorted = []
-            document.querySelector('.currentOrder').innerText = order
+            document.querySelector('.currentOrderItem').innerText = order
             if (order === 'Popularité')
             {
                 mediaSorted = sortByPopularity(medias)    
