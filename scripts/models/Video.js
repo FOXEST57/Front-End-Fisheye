@@ -12,10 +12,12 @@ class Video extends Media
     {
         return`
             ${this.rederWrapper()}
-            <video  class="movie media" data-id="${this.id}" controls autoplay>
+            <a href="#" class="movie media">
+            <video  class="movie media" data-id="${this.id}" autoplay>
                 <source src="/assets/portfolio/video/${this.video}" type="video/mp4">
                 <p>Video de ${this.photographer.name} : ${this.title}</p>
-            </video>    
+            </video> 
+            </a>
         `
     }
 

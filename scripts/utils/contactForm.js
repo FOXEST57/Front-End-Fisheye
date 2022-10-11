@@ -8,6 +8,7 @@ function displayModal() {
 function closeModal() {
     const modal = document.getElementById('contact_modal');
     modal.style.display = 'none';
+    
 }
 
 document.querySelector('#submit_button').addEventListener('click', (e) =>

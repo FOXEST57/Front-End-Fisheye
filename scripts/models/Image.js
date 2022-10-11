@@ -12,7 +12,9 @@ class Image extends Media
     {
         return`
         ${this.rederWrapper()}
+        <a href="#" class="picture media">
         <img class="picture media" src="/assets/portfolio/medium/${this.image}" alt="Photo de ${this.photographer.name} : ${this.title}">
+        </a>
         `
     }
 

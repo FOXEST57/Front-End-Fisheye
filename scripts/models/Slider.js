@@ -3,20 +3,6 @@ class Slider
 {
     constructor ()
     {
-    }
-    
-    listen() {
-        document.querySelectorAll('.media').forEach(mediaEl =>
-        {
-            mediaEl.addEventListener('click', () =>
-            {
-                const id = Number(mediaEl.closest('.card_picture').querySelector('.like').dataset.id);
-                const media = this.all.find(a => a.id === id)
-                this.open()
-                this.show(media)
-            })
-        })
-
         document.querySelector('.slider-close').addEventListener('click', () => {this.close()})
         document.querySelector('.next').addEventListener('click', () => {this.next();})
         document.querySelector('.previous').addEventListener('click', () => { this.previous() })
@@ -37,6 +23,21 @@ class Slider
                 this.close()
             }
         })
+    }
+    
+    listen() {
+        document.querySelectorAll('.media').forEach(mediaEl =>
+        {
+            mediaEl.addEventListener('click', () =>
+            {
+                const id = Number(mediaEl.closest('.card_picture').querySelector('.like').dataset.id);
+                const media = this.all.find(a => a.id === id)
+                this.open()
+                this.show(media)
+            })
+        })
+
+      
     }
 
     hydrate(medias)
