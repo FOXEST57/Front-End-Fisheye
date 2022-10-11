@@ -152,25 +152,23 @@ h2 {
 #main{
     display: flex;
     flex-direction: column;
-    position: relative;
+   
   
 }
 
 .section_media {
+    position: relative;
+   
+}
+.section_media-inner {
     display: flex;
     flex-wrap: wrap;
     justify-content:space-around ;
     order: 3;
     position: absolute;
-    top: 50vh;
+    top: 20px;
 }
 
-@media screen and (min-width: 350px) {
-    .section_media{
-        background-color: #D3573C;
-        top: 70vh;
-    }    
-}
 
 .photograph-header{
     order: 0;

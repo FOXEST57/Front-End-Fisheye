@@ -10,10 +10,15 @@ const data = await fetch('data/photographers.json').then(a => a.json())
 const photographer = data.photographers.find(a => a.id == id)
 const medias = build(data, photographer);
 
-//console.log(displayModal());
+
 
 //afficher les détails du photographe
 displayProfile(photographer);
+//préparer le dom  du média
+prepareMediaDom()
+const div = document.createElement('div')
+div.classList.add('section_media-inner');
+document.querySelector('.section_media').append(div)
 //affiche les medias du photographe
 displayMedias(medias);
 //affiche le nombre total de like et le prix du photographe
@@ -116,12 +121,12 @@ function displayProfile(photographer)
 
 function displayMedias(medias)
 {
-    document.querySelector('.section_media').innerHTML = '';
+    document.querySelector('.section_media-inner').innerHTML = '';
     medias.forEach(function(media) {
         let imageSection = document.createElement('div')
         imageSection.className = 'card_picture' 
         imageSection.innerHTML = media.buildHtml()
-        document.querySelector('.section_media').append(imageSection)
+        document.querySelector('.section_media-inner').append(imageSection)
     })
 }
 
@@ -133,11 +138,11 @@ function buidDopdownSorting()
     
     element.innerHTML = `
     <span class='titleButton'>Trier par</span>
-    <div class='currentOrder'>Popularité</div>
+    <div class='currentOrder'>Popularité </div>
     <div class='options'>
-        <span class='sortButton' data-id='Titre'>Titre</span>
-        <span class='sortButton' data-id='Popularité'>Popularité</span>
-        <span class='sortButton date' data-id='Date'>Date</span>
+        <a class='sortButton' data-id='Titre'>Titre</a>
+        <a class='sortButton' data-id='Popularité'>Popularité</a>
+        <a class='sortButton date' data-id='Date'>Date</a>
     <div/>
     `
     document.querySelector('main').prepend(element)
@@ -238,4 +243,11 @@ function sortByDate(medias)
         return 0;
     })
     
+}
+
+function prepareMediaDom()
+{
+    const div = document.createElement('div')
+    div.classList.add('section_media-inner');
+    document.querySelector('.section_media').append(div)
 }
