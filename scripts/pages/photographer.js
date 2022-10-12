@@ -16,12 +16,12 @@ const medias = build(data, photographer);
 displayProfile(photographer);
 //préparer le dom  du média
 prepareMediaDom()
+//bouton pour faire le tri
+buidDopdownSorting();
 //affiche les medias du photographe
 displayMedias(medias);
 //affiche le nombre total de like et le prix du photographe
 displayTotalLikes(photographer)
-//bouton pour faire le tri
-buidDopdownSorting();
 //permet d'ajouter ou d'enlever un like
 listenForLikes(medias);
 //mise à jour du nombre de like
@@ -134,21 +134,21 @@ function buidDopdownSorting()
     element.className ='wrapTry'
     
     element.innerHTML = `
-    <span class='titleButton'>Trier par</span>
+    <span class='titleButton' >Trier par</span>
     <a class='currentOrder' href='#'>
          <span class ="currentOrderItem">Popularité </span>
          <i class="fa far-regular fa-chevron-down"></i>
     </a>
     <div class='options'>
-        <a class='sortButton' data-id='Titre'  href='#'>
+        <a class='sortButton' data-id='Titre'  href='#' aria-label="trier les medias par titre">
         <span>Titre</span>
             <i class="fa far-regular fa-chevron-up" /></i>
         </a>
-        <a class='sortButton' data-id='Popularité' >Popularité</a>
-        <a class='sortButton date' data-id='Date'>Date</a>
+        <a class='sortButton' data-id='Popularité' href="#" href='#' aria-label="trier les medias par Popularité">Popularité</a>
+        <a class='sortButton date' data-id='Date' href="#" aria-label="trier les medias par date de création" >Date</a>
     <div/>
     `
-    document.querySelector('main').prepend(element)
+    document.querySelector('.section_media').prepend(element)
     document.querySelector('.options').style.display = 'none';
 }
 
