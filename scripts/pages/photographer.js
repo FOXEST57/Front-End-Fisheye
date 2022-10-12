@@ -1,6 +1,5 @@
 import MediaFactory from '../factories/media.js';
 import Slider from '../models/Slider.js';
-//import { displayModal, closeModal } from '../utils/contactForm.js';
 
 // recupère iD
 const id = getId()
