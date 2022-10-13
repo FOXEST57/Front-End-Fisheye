@@ -1,10 +1,8 @@
 const keyHandler = (e) => {
-    if (e.key === 'Escape')
-    {
+    if (e.key === 'Escape') {
         closeModal()
     }
-    if(e.key ==='Tab' && e.target.getAttribute('id') === 'submit_button')
-    {
+    if (e.key === 'Tab' && e.target.getAttribute('id') === 'submit_button') {
         document.getElementById('close-modal').focus()
     }
 }
@@ -13,26 +11,24 @@ function displayModal() {
     const modal = document.getElementById('contact_modal');
     modal.style.display = 'block';
     document.querySelector('#firstname').focus()
-    document.addEventListener('keydown', keyHandler) 
+    document.addEventListener('keydown', keyHandler)
 }
 
 function closeModal() {
     const modal = document.getElementById('contact_modal');
     modal.style.display = 'none';
-    document.removeEventListener('keydown', keyHandler) 
-    
+    document.removeEventListener('keydown', keyHandler)
+
 }
 
-document.querySelector('#submit_button').addEventListener('click', (e) =>
-{
+document.querySelector('#submit_button').addEventListener('click', (e) => {
     e.preventDefault();
     const firstNameEl = document.querySelector('#firstname');
     const lastNameEl = document.querySelector('#lastname');
     const emailEl = document.querySelector('#email');
     const messageEl = document.querySelector('#message');
 
-    if (isNameValid(firstNameEl) && isNameValid(lastNameEl) && isEmailValid(emailEl) && isMessageValid(messageEl))
-    {
+    if (isNameValid(firstNameEl) && isNameValid(lastNameEl) && isEmailValid(emailEl) && isMessageValid(messageEl)) {
         console.log({
             firstName: firstNameEl.value,
             lastName: lastNameEl.value,
@@ -40,19 +36,17 @@ document.querySelector('#submit_button').addEventListener('click', (e) =>
             message: messageEl.value,
         })
         closeModal()
-    }    
-    
+    }
+
 })
 const modal = document.getElementById('contact_modal').style.display = 'none';
 
 
-function isNameValid(el)
-{
+function isNameValid(el) {
     hideError(el)
     const name = el.value;
     let regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-    if (name.length < 2 || name === '' || !regex.test(name))
-    {
+    if (name.length < 2 || name === '' || !regex.test(name)) {
         console.log(el, 'prob')
         showError(el)
         return false;
@@ -60,46 +54,39 @@ function isNameValid(el)
     return true;
 }
 
-function isMessageValid(el)
-{
+function isMessageValid(el) {
     const message = el.value;
     hideError(el)
-    if (message.trim(' ').length < 5)
-    {
+    if (message.trim(' ').length < 5) {
         showError(el);
         return false;
     }
     return true;
 }
 
-function isEmailValid(el)
-{
+function isEmailValid(el) {
     const mail = el.value
     hideError(el)
 
     let regex = /^\S+@\S+\.\S+$/;
-    if (!regex.test(mail) || mail == '')
-    {
+    if (!regex.test(mail) || mail == '') {
         showError(el)
         return false;
     }
-    return true;    
+    return true;
 }
 
-function showError(el)
-{
+function showError(el) {
     const div = document.createElement('p')
     div.classList.add('error')
     div.innerText = 'Merci de corriger l erreur.'
     el.closest('.form-group').appendChild(div)
 }
 
-function hideError(el)
-{
+function hideError(el) {
     const p = el.closest('.form-group').querySelector('p.error');
-    
-    if (p)
-    {
+
+    if (p) {
         p.remove()
     }
 }
