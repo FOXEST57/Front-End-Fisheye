@@ -96,7 +96,7 @@ function displayProfile(photographer)
 {
     const photographerPicture = document.createElement('div')
     const htmlPicture = `
-        <img class= 'photographer_picture' src='/assets/photographers/${photographer.portrait}'>
+        <img alt='portrait du photographe' class= 'photographer_picture' src='/assets/photographers/${photographer.portrait}'>
         `
     photographerPicture.innerHTML = htmlPicture
     document.querySelector('.photograph-header').prepend(photographerPicture)
