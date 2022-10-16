@@ -39,7 +39,7 @@ class Media
             <span class='title'> ${this.title} </span>
             <span> 
                 <span class='like_picture'> ${this.likes}</span> 
-                <span class='heart'> <i class='fa-regular fa-heart'></i></span>
+                <a class='heart'> <i class='fa-regular fa-heart'></i></a>
             </span>        
         </div>`
     }
