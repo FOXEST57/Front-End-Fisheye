@@ -2,6 +2,7 @@ import Image from '../models/Image.js';
 import Video from '../models/Video.js';
 
 
+
 class MediaFactory
 {
     constructor(photographer)
