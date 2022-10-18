@@ -34,18 +34,14 @@ slider.hydrate(medias);
 slider.listen()
 
 
-
-
-
-
-
 function listenForLikes(medias)
 {
     medias.forEach(media =>
     {
         const likeButton = document.querySelector(`div[data-id='${media.id}'] .heart`)
-        likeButton.addEventListener('click',() =>
+        likeButton.addEventListener('click',(e) =>
         {
+            e.preventDefault()
             media.toogleLike();
             countTotalLikes(medias);
         })

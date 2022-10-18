@@ -11,13 +11,14 @@ class Video extends Media
     buildHtml()
     {
         return`
-            ${this.rederWrapper()}
+           
             <a href="#" class="movie media">
             <video  class="movie media" data-id="${this.id}" autoplay>
                 <source src="/assets/portfolio/video/${this.video}" type="video/mp4">
                 <p>Video de ${this.photographer.name} : ${this.title}</p>
             </video> 
             </a>
+            ${this.rederWrapper()}
         `
     }
 

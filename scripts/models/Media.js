@@ -39,7 +39,7 @@ class Media
             <span class='title'> ${this.title} </span>
             <span> 
                 <span class='like_picture'> ${this.likes}</span> 
-                <a class='heart'> <i class='fa-regular fa-heart'></i></a>
+                <button class='heart' href="#" aria-Label="Cliquer pour aimer cette photo"> <i class='fa-regular fa-heart'></i></button>
             </span>        
         </div>`
     }

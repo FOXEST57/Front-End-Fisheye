@@ -17,7 +17,8 @@ function photographerFactory(data) {
         const img = document.createElement('img');
         img.className = 'photographer_picture'
         img.setAttribute('src', picture)
-        img.ariaLabel ="portrait du photographe"
+        // img.ariaLabel =`portrait de ${name}`
+        img.setAttribute('alt', `portrait de ${name}`)
 
         const h2 = document.createElement('h2');
         h2.textContent = name;
